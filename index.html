@@ -140,7 +140,7 @@ header{display:flex;flex-direction:column;gap:6px}
 
   <div class="tip">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#ffd24a" stroke-width="2"/><path d="M12 7v6M12 16.5v.5" stroke="#ffd24a" stroke-width="2.4" stroke-linecap="round"/></svg>
-    <p>El botón <b>Copiar e ir a Unired</b> copia el número de la cuenta. En Unired solo lo <b>pegas</b> y aparece el monto a pagar.</p>
+    <p>Dentro de cada cuenta, toca <b>Copiar</b> para llevarte el número y después <b>Ir a Unired</b>. Ahí lo pegas y aparece el monto a pagar.</p>
   </div>
 </div>
 
@@ -158,19 +158,19 @@ const ART = {
 
 const S = [
   {id:"luz", cls:"t-luz", name:"Luz", co:"Enel", label:"N° de cliente", num:"1429008-7", day:28,
-   url:"https://www.unired.cl", cta:"Copiar e ir a Unired",
+   url:"https://www.unired.cl", cta:"Ir a Unired",
    steps:["En Unired toca “Agregar cuenta” y elige <b>Enel</b>.","Pega el número y aparece el monto.","Paga con tarjeta o transferencia."],
    alt:{url:"https://www.enel.cl", text:"Otra opción: página de Enel"}},
   {id:"agua", cls:"t-agua", name:"Agua", co:"Aguas Andinas", label:"N° de cuenta", num:"1084727-3", day:30,
-   url:"https://www.unired.cl", cta:"Copiar e ir a Unired",
+   url:"https://www.unired.cl", cta:"Ir a Unired",
    steps:["En Unired toca “Agregar cuenta” y elige <b>Aguas Andinas</b>.","Pega el número y aparece el monto.","Paga con tarjeta o transferencia."],
    alt:{url:"https://www.aguasandinas.cl", text:"Otra opción: página de Aguas Andinas"}},
   {id:"gas", cls:"t-gas", name:"Gas", co:"Abastible", label:"N° de cliente", num:"7123651", day:19,
-   url:"https://www.unired.cl", cta:"Copiar e ir a Unired",
+   url:"https://www.unired.cl", cta:"Ir a Unired",
    steps:["En Unired toca “Agregar cuenta” y elige <b>Abastible Boleta</b>.","Pega el número y aparece el monto.","Paga con tarjeta o transferencia."],
    alt:{url:"https://www.abastible.cl", text:"Otra opción: página de Abastible"}},
   {id:"vtr", cls:"t-vtr", name:"Internet", co:"Claro VTR", label:"Se entra con", num:"RUT del titular", day:16, noCopy:true,
-   url:"https://pagoexpress.vtr.cl", cta:"Ir a pagar a VTR",
+   url:"https://pagoexpress.vtr.cl/PagoExpress/index", cta:"Ir a pagar a VTR",
    steps:["Se abre el Pago Express de Claro VTR.","Ingresa el RUT de Sofía (titular de la cuenta).","Marca la boleta vigente y toca <b>Pagar</b>."],
    alt:{url:"https://www.unired.cl", text:"Otra opción: pagar en Unired"}}
 ];
@@ -244,7 +244,6 @@ function openSheet(s){
   document.getElementById("closeBtn").addEventListener("click",closeSheet);
   const cb=document.getElementById("copyBtn");
   if(cb) cb.addEventListener("click",async()=>{ if(await copy(s.num)){cb.textContent="¡Copiado!";cb.classList.add("ok");showToast("Número copiado ✓");} else {cb.textContent="Mantén presionado el número";} });
-  if(!s.noCopy) document.getElementById("goBtn").addEventListener("click",()=>{ copy(s.num).then(ok=>{ if(ok) showToast("Número copiado ✓ · pégalo en Unired"); }); });
   setTimeout(()=>document.getElementById("closeBtn").focus(),50);
 }
 function closeSheet(){ sheet.classList.remove("on"); scrim.classList.remove("on"); if(lastBtn) lastBtn.focus(); }
