@@ -44,6 +44,10 @@ body{
   padding:calc(22px + env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) calc(28px + env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left));
   display:flex;flex-direction:column;gap:20px}
 header{display:flex;flex-direction:column;gap:6px}
+.head{flex-direction:row;align-items:center;gap:14px}
+.head>div{display:flex;flex-direction:column;gap:6px}
+.dogs{flex:none;width:84px;height:84px;border-radius:24px;object-fit:cover;
+  box-shadow:0 10px 24px -8px rgba(143,211,255,.45),0 0 0 3px rgba(255,255,255,.14)}
 .hello{font-family:var(--display);font-weight:800;font-size:34px;line-height:1.05;letter-spacing:-.5px;text-wrap:balance}
 .hello span{background:linear-gradient(90deg,#ffd24a,#ff7ab6 55%,#8fd3ff);-webkit-background-clip:text;background-clip:text;color:transparent}
 .sub{color:var(--muted);font-weight:700;font-size:15px}
@@ -124,9 +128,12 @@ header{display:flex;flex-direction:column;gap:6px}
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <h1 class="hello">Cuentas de la <span>casa</span></h1>
-    <p class="sub">Toca la cuenta que quieres pagar</p>
+  <header class="head">
+    <img class="dogs" src="perros.jpg" width="84" height="84" alt="Los dos huskies de la casa con un celular que dice Pagado">
+    <div>
+      <h1 class="hello">Cuentas de la <span>casa</span></h1>
+      <p class="sub">Toca la cuenta que quieres pagar</p>
+    </div>
   </header>
 
   <main class="grid" id="grid"></main>
